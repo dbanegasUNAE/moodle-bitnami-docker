@@ -13,7 +13,7 @@ services:
       - './db:/bitnami/mariadb'
 
   moodle:
-    image: docker.io/bitnami/moodle:4.1
+    image: docker.io/bitnami/moodle:4.1.4
     ports:
       - '${HTTP_PORT}:8080'
       - '${HTTPS_PORT}:8443'
