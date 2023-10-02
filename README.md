@@ -1,5 +1,9 @@
 # moodle4-bitnami
-Moodle
+Moodle 4.1.4
+
+## Folders required
+- 
+
 
 
 # For network specific
