@@ -2,9 +2,12 @@
 Moodle 4.1.4
 
 ## Folders required
-- 
+- data
+- www
+- db
 
-
+chmod 775
+chown root:root ./db
 
 # For network specific
 
