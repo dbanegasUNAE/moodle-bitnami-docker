@@ -13,14 +13,11 @@ services:
       - './db:/bitnami/mariadb'
 
   moodle:
-    image: docker.io/bitnami/moodle:4.1.4
+    image: docker.io/bitnami/moodle:4.1
     ports:
       - '${HTTP_PORT}:8080'
       - '${HTTPS_PORT}:8443'
     environment:
-      MOODLE_USERNAME: "${MOODLE_USERNAME:-user}"
-      MOODLE_PASSWORD: "${MOODLE_PASSWORD:-bitnami}"
-      MOODLE_SITE_NAME: "${MOODLE_SITE_NAME:-New}"
       MOODLE_DATABASE_HOST: "mariadb"
       MOODLE_DATABASE_PORT_NUMBER: "3306"
       MOODLE_DATABASE_USER: "${MARIADB_USER}"
