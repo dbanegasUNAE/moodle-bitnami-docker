@@ -51,9 +51,9 @@ services:
       MOODLE_SSLPROXY: "true"
 
       MOODLE_USERNAME: "${MOODLE_USERNAME:-admin}"
-      MOODLE_PASSWORD: "${MOODLE_PASSWORD:-Admin23*}"
-      MOODLE_EMAIL: "${MOODLE_EMAIL:-eveas@unae.edu.ec}"
-      MOODLE_SITE_NAME: "${MOODLE_SITE_NAME:-eveas}"
+      MOODLE_PASSWORD: "${MOODLE_PASSWORD:-admin}"
+      MOODLE_EMAIL: "${MOODLE_EMAIL:-mail@example.com}"
+      MOODLE_SITE_NAME: "${MOODLE_SITE_NAME:-moodle}"
       MOODLE_LANG: "${MOODLE_LANG:-en}"
       MOODLE_SKIP_BOOTSTRAP: "${MOODLE_SKIP_BOOTSTRAP:-no}"
 
@@ -89,9 +89,9 @@ networks:
 
 * .ENV
 MOODLE_USERNAME= "admin"
-MOODLE_PASSWORD= "Admin23*"
-MOODLE_EMAIL= "eveas@unae.edu.ec"
-MOODLE_SITE_NAME= "seguimiento"
+MOODLE_PASSWORD= "admin"
+MOODLE_EMAIL= "mail@example.com"
+MOODLE_SITE_NAME= "Moodle"
 MOODLE_LANG = "es"
 MOODLE_SKIP_BOOTSTRAP= "no"
 #Do not initialize the Moodle database for a new deployment. This is necessary in case you use a database that already has Moodle data. Default: no
@@ -99,16 +99,16 @@ MOODLE_SKIP_BOOTSTRAP= "no"
 MOODLE_DATABASE_TYPE="mysqli"
 MOODLE_DATABASE_HOST="db"
 MOODLE_DATABASE_PORT_NUMBER= "3306"
-MOODLE_DATABASE_USER= "eveasSg01"
-MOODLE_DATABASE_PASSWORD= "eveasSg01."
-MOODLE_DATABASE_NAME= "eveasSg"
+MOODLE_DATABASE_USER= "user"
+MOODLE_DATABASE_PASSWORD= "admin"
+MOODLE_DATABASE_NAME= "moodle"
 
 #ALLOW_EMPTY_PASSWORD is recommended only for development.
 ALLOW_EMPTY_PASSWORD="no"
 
 MYSQL_CLIENT_FLAVOR= "mysql"
 MYSQL_CLIENT_DATABASE_ROOT_USER= "root"
-MYSQL_CLIENT_DATABASE_ROOT_PASSWORD= "ev.00SV03*23-"
+MYSQL_CLIENT_DATABASE_ROOT_PASSWORD= "root"
 
 # Moodle con acceso a una base de datos preexistente
 
@@ -118,14 +118,14 @@ services:
   eveaseguimiento2:
     image: docker.io/bitnami/moodle:4.1.1
     environment:
-      MOODLE_HOST: "seguimiento.unae.edu.ec"
+      MOODLE_HOST: "example.com"
       MOODLE_REVERSEPROXY: "true"
       MOODLE_SSLPROXY: "true"
 
       MOODLE_USERNAME: "${MOODLE_USERNAME:-admin}"
-      MOODLE_PASSWORD: "${MOODLE_PASSWORD:-Admin23*}"
-      MOODLE_EMAIL: "${MOODLE_EMAIL:-eveas@unae.edu.ec}"
-      MOODLE_SITE_NAME: "${MOODLE_SITE_NAME:-eveas}"
+      MOODLE_PASSWORD: "${MOODLE_PASSWORD:-admin}"
+      MOODLE_EMAIL: "${MOODLE_EMAIL:-mail@example.com}"
+      MOODLE_SITE_NAME: "${MOODLE_SITE_NAME:-moodle}"
       MOODLE_LANG: "${MOODLE_LANG:-en}"
       MOODLE_SKIP_BOOTSTRAP: "${MOODLE_SKIP_BOOTSTRAP:-no}"
 
@@ -152,9 +152,9 @@ networks:
 
 * .env
 MOODLE_USERNAME= "admin"
-MOODLE_PASSWORD= "Admin23*"
-MOODLE_EMAIL= "eveas@unae.edu.ec"
-MOODLE_SITE_NAME= "seguimiento"
+MOODLE_PASSWORD= "admin"
+MOODLE_EMAIL= "mail@example.com"
+MOODLE_SITE_NAME= "Moodle"
 MOODLE_LANG = "es"
 MOODLE_SKIP_BOOTSTRAP= "yes"
 #Do not initialize the Moodle database for a new deployment. This is necessary in case you use a database that already has Moodle data. Default: no
@@ -163,15 +163,15 @@ MOODLE_DATABASE_TYPE="mysqli"
 MOODLE_DATABASE_HOST="db"
 MOODLE_DATABASE_PORT_NUMBER= "3306"
 MOODLE_DATABASE_USER= "root"
-MOODLE_DATABASE_PASSWORD= "ev.00SV03*23-"
-MOODLE_DATABASE_NAME= "seguimiento_2023_2"
+MOODLE_DATABASE_PASSWORD= "root"
+MOODLE_DATABASE_NAME= "moodle"
 
 #ALLOW_EMPTY_PASSWORD is recommended only for development.
 ALLOW_EMPTY_PASSWORD="no"
 
 MYSQL_CLIENT_FLAVOR= "mysql"
 MYSQL_CLIENT_DATABASE_ROOT_USER= "root"
-MYSQL_CLIENT_DATABASE_ROOT_PASSWORD= "ev.00SV03*23-"
+MYSQL_CLIENT_DATABASE_ROOT_PASSWORD= "root"
 
 # WITH DATABASE CREATION
 version: '3.8'
@@ -210,8 +210,8 @@ HTTP_PORT="4061"
 HTTPS_PORT="4063"
 
 
-MARIADB_USER="usrMdb"
-MARIADB_DATABASE="dbMoodle"
+MARIADB_USER="user"
+MARIADB_DATABASE="moodle"
 
 #ALLOW_EMPTY_PASSWORD is recommended only for development.
 ALLOW_EMPTY_PASSWORD="yes"
