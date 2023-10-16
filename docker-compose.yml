@@ -1,30 +1,45 @@
 version: '3.8'
 
 services:
-  mariadb:
-    image: docker.io/bitnami/mariadb:11.0
+  eveaseguimiento:
+    image: docker.io/bitnami/moodle:4.1.1
     environment:
-      ALLOW_EMPTY_PASSWORD: "${ALLOW_EMPTY_PASSWORD:-yes}"
-      MARIADB_USER: "${MARIADB_USER}"
-      MARIADB_DATABASE: "${MARIADB_DATABASE}"
-      MARIADB_CHARACTER_SET: "utf8mb4"
-      MARIADB_COLLATE: "utf8mb4_unicode_ci"
-    volumes:
-      - './db:/bitnami/mariadb'
+     MOODLE_HOST: "${MOODLE_HOST:-localhost}"
+      MOODLE_REVERSEPROXY: "${MOODLE_REVERSEPROXY:-false}"
+      MOODLE_SSLPROXY: "${MOODLE_REVERSEPROXY:-false}"
 
-  moodle:
-    image: docker.io/bitnami/moodle:4.1
-    ports:
-      - '${HTTP_PORT}:8080'
-      - '${HTTPS_PORT}:8443'
-    environment:
-      MOODLE_DATABASE_HOST: "mariadb"
-      MOODLE_DATABASE_PORT_NUMBER: "3306"
-      MOODLE_DATABASE_USER: "${MARIADB_USER}"
-      MOODLE_DATABASE_NAME: "${MARIADB_DATABASE}"
-      ALLOW_EMPTY_PASSWORD: "${ALLOW_EMPTY_PASSWORD:-yes}"
+      MOODLE_USERNAME: "${MOODLE_USERNAME:-admin}"
+      MOODLE_PASSWORD: "${MOODLE_PASSWORD:-Admin23*}"
+      MOODLE_EMAIL: "${MOODLE_EMAIL:-eveas@unae.edu.ec}"
+      MOODLE_SITE_NAME: "${MOODLE_SITE_NAME:-eveas}"
+      MOODLE_LANG: "${MOODLE_LANG:-en}"
+      MOODLE_SKIP_BOOTSTRAP: "${MOODLE_SKIP_BOOTSTRAP:-no}"
+
+      MOODLE_DATABASE_TYPE : "${MOODLE_DATABASE_TYPE}"
+      MOODLE_DATABASE_HOST: "${MOODLE_DATABASE_HOST}"
+      MOODLE_DATABASE_PORT_NUMBER: "${MOODLE_DATABASE_PORT_NUMBER}"
+      MOODLE_DATABASE_USER: "${MOODLE_DATABASE_USER}"
+      MOODLE_DATABASE_PASSWORD: "${MOODLE_DATABASE_PASSWORD}"
+      MOODLE_DATABASE_NAME: "${MOODLE_DATABASE_NAME}"
+
+      ALLOW_EMPTY_PASSWORD: "${ALLOW_EMPTY_PASSWORD:-no}"
+      
+      MYSQL_CLIENT_FLAVOR: "${MYSQL_CLIENT_FLAVOR}"
+      MYSQL_CLIENT_DATABASE_HOST: "${MOODLE_DATABASE_HOST}"
+      MYSQL_CLIENT_DATABASE_PORT_NUMBER: "${MOODLE_DATABASE_PORT_NUMBER}"
+      MYSQL_CLIENT_DATABASE_ROOT_USER: "${MYSQL_CLIENT_DATABASE_ROOT_USER}"
+      MYSQL_CLIENT_DATABASE_ROOT_PASSWORD: "${MYSQL_CLIENT_DATABASE_ROOT_PASSWORD}"
+      MYSQL_CLIENT_CREATE_DATABASE_NAME: "${MOODLE_DATABASE_NAME}"
+      MYSQL_CLIENT_CREATE_DATABASE_USER: "${MOODLE_DATABASE_USER}"
+      MYSQL_CLIENT_CREATE_DATABASE_PASSWORD: "${MOODLE_DATABASE_PASSWORD}"
+      
+      BITNAMI_DEBUG: "true"
     volumes:
       - './www:/bitnami/moodle'
       - './data:/bitnami/moodledata'
-    depends_on:
-      - mariadb
+    networks:
+      eveasdp_eveasnet:
+        ipv4_address: 10.99.0.71
+networks:
+  eveasdp_eveasnet:
+    external: true
